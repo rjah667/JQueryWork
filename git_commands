@@ -1,0 +1,33 @@
+git add .
+
+This adds in all of your files & changes so far to a staging area.
+
+Then type:
+
+git commit -m "first commit"
+
+This commits all of your files, adding the message “first commit”
+
+Next type:
+
+git remote add origin https://github.com/username/rails-girls.git
+
+Your GitHub Repository page will list the repository URL, so feel free to copy and paste from there, rather than typing it in manually. You can copy and paste the link from your GitHub repository page by clicking the clipboard icon next to the URL.
+
+This creates a remote, or connection, named “origin” pointing at the GitHub repository you just created.
+
+Then type:
+
+git push -u origin master
+
+This sends your commits in your “master” branch to GitHub
+
+Congratulations your app is on GitHub! Go check it out by going to the same url you used above: https://github.com/username/rails-girls (without the .git part)
+
+If you want to continue making changes and pushing them to GitHub you’ll just need to use the following three commands:
+
+git add .
+
+git commit -m "type your commit message here"
+
+git push origin master
