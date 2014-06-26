@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+        <head>
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                <link href="css/bootstrap.css" rel="stylesheet">
+                <style type="text/css">
+                        .thumbnail img {
+                            width:180px;
+                            height:200px
+                        }
+                </style>        
+        </head>
+        <body>
+                <div class="row">
+                 
+                  <div class="col-xs-6 col-md-4">
+                    <a href="http://www.google.com/search?q=quaid+e+azam" class="thumbnail">
+                      <img src="2.jpg" alt="Quaid e Azam " text="Muhammad Ali Jinnah in London When he was Young">
+                    </a>
+                  </div>
+                  
+                  <div class="col-xs-6 col-md-4">
+                    <a href="http://www.google.com/search?q=Z+A+Bhutto" class="thumbnail">
+                      <img src="3.jpg" alt="Z A Bhutto" text="Z A Bhutto was greate leader and thinker">
+                    </a>
+                  </div>
+                  
+                  <div class="col-xs-6 col-md-4">
+                    <a href="http://www.google.com/search?q=nelson+mandela" class="thumbnail">
+                      <img src="4.jpg" alt="Nelson Mandela" text="Nelson Mandela Play an important role SA progress">
+                    </a>
+                  </div>
+                  
+                </div>
+                
+                
+                <div class="alert alert-success"><span><b>Well done!</b></span> You successfully read this important alert message.</div>
+                <div class="alert alert-info"><span><b>Heads up!</b></span> This alert needs your attention, but it's not super important.</div>
+                <div class="alert alert-warning"><span><b>Warning!</b></span> Better check yourself, you're not looking too good.</div>
+                <div class="alert alert-danger"><span><b>Oh snap!</b></span> Change a few things up and try submitting again.</div>
+                
+                
+                
+                <div class="progress progress-striped active">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                    10%
+                  </div>
+                </div>
+                
+                <div>
+                        <button id="progress"> Check Progress </button>
+                </div>
+                <br>
+                <div>
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a href="#">Home</a>Rashid Jahangir</li>
+                          <li><a href="#">Profile</a></li>
+                          <li><a href="#">Messages</a></li>
+                        </ul>
+                </div>
+
+                <div>
+                    <p>Date:<input type="text" id="datepicker" /></p>
+                </div>
+                                
+        </body>
+        
+        	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+		        $(document).ready(function(){
+		        
+		                $("#progress").click(function(){
+		                
+		                        //var progressElement=document.getElementsByClass("progress-bar");
+		                        console.log("hello");
+		                        var value=$(".progress-bar").attr("aria-valuenow");
+		                        value=parseInt(value);
+		                        if(value!=100){
+		                                value=value+10;
+		                        }else{
+		                                alert("Progress Complete");
+		                        }
+		                        $(".progress-bar").attr("aria-valuenow",value);
+		                        $(".progress-bar").html(value+"%");
+		                        $(".progress-bar").css({"width":value+"%"});
+		                
+		                });
+
+                    $("#datepicker").datepicker();
+		        
+		        });
+		
+		</script>
+</html>

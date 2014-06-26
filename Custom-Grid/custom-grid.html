@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC  "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Custom Grid Of On page</title>
+		<meta http-equiv="content-type" content="text/hrml ;charset=UTF-8">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/dialog.css" rel="stylesheet">
+
+		<style type="text/css">
+
+		#div-container{
+
+			width: 350px; 
+			overflow-x: hidden;
+			font: 14px Arial;
+			color: #34495e;
+			background: #ecf0f1;
+			margin: 0 8px; 
+
+		}
+
+		.dialogStyle{
+			border: 2px solid #BC516D; 
+			padding: 7px;
+		}
+
+		.ui-corner-all span{
+			font-size: 30px;
+			font-weight: bold;
+			color:#BC895C;
+			opacity: 0.5;
+		}
+
+		</style>
+	</head>
+	<body id="mainpage">
+
+		<CENTER>
+<H1>A Simple Sample Web Page</H1>
+
+ 
+
+  <IMG SRC="http://sheldonbrown.com/images/scb_eagle_contact.jpeg">
+
+ 
+
+ 
+
+  <H4>By Sheldon Brown</H4>
+
+<H2>Demonstrating a few HTML features</H2>
+
+</CENTER>
+
+HTML is really a very simple language. It consists of ordinary text, with commands that are enclosed by "<" and ">" characters, or bewteen an "&" and a ";". <P>
+ 
+
+You don't really need to know much HTML to create a page, because you can copy bits of HTML from other pages that do what you want, then change the text!<P>
+ 
+
+This page shows on the left as it appears in your browser, and the corresponding HTML code appears on the right. The HTML commands are linked to explanations of what they do.
+ 
+
+ 
+
+<H3>Line Breaks</H3>
+
+HTML doesn't normally use line breaks for ordinary text. A white space of any size is treated as a single space. This is because the author of the page has no way of knowing the size of the reader's screen, or what size type they will have their browser set for.<P>
+
+ 
+
+If you want to put a line break at a particular place, you can use the "<BR>" command, or, for a paragraph break, the "<P>" command, which will insert a blank line. The heading command ("<4></4>") puts a blank line above and below the heading text.
+
+ 
+
+<H4>Starting and Stopping Commands</H4>
+
+Most HTML commands come in pairs: for example, "<H4>" marks the beginning of a size 4 heading, and "</H4>" marks the end of it. The closing command is always the same as the opening command, except for the addition of the "/".<P>
+
+ 
+
+Modifiers are sometimes included along with the basic command, inside the opening command's < >. The modifier does not need to be repeated in the closing command.
+
+ 
+
+ 
+
+<H1>This is a size "1" heading</H1>
+
+<H2>This is a size "2" heading</H2>
+
+<H3>This is a size "3" heading</H3>
+
+<H4>This is a size "4" heading</H4>
+
+<H5>This is a size "5" heading</H5>
+
+<H6>This is a size "6" heading</H6>
+
+<center>
+
+<H4>Copyright © 1997, by
+<A HREF="http://sheldonbrown.com/index.html">Sheldon Brown</A>
+</H4>
+
+If you would like to make a link or bookmark to this page, the URL is:<BR> http://sheldonbrown.com/web_sample1.html
+
+
+
+		<div id="div-container" style="display:none">
+        <form class="form-signin" role="form">
+        <div>
+          <div class="text-font">
+            Cell size:
+          </div>
+          <div >
+            <input type="number" class="form-control" name="size" value="40" min="1" step="1" id="cell-size">
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Grid color:
+          </div>
+          <div>
+            <input class="form-control" name="color" type="text" value="#BC6B91" autocomplete="off" style="color: rgb(52, 73, 94); background-image: none; background-color: rgb(202, 199, 135);" id="color-of-cell">
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Opacity:
+          </div>
+          <div>
+            <input class="form-control" name="opacity" type="number" value="0.4" min="0" max="1" step="0.1" id="opacity">
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Width:
+          </div>
+          <div>
+            <input type="text" class="form-control" name="width" value="100%" id="width-of-cell">
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Align:
+          </div>
+          <div >
+            <select style="width:100%;height:40px" name="align" id="position-of-cell">
+              <option value="center">Center</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </div>
+        </div>
+        <div>
+           <div class="text-font">
+            Container:
+          </div>
+          <div>
+            <input type="text" class="form-control" name="container" value="body" id="container-of-cell">
+          </div>
+        </div>
+      </form>
+      <br>
+        <div>
+        <button class="btn btn-lg btn-primary btn-block" id="generate-btn1" style="width:48%;">Show</button>
+        <button class="btn btn-lg btn-primary btn-block" id="generate-btn2" style="width:48%;margin-top:1px">Hide</button>
+      </div>
+      </div>
+	</body>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		
+	
+			 $(document).ready(function(){
+			 	$("#div-container").dialog({
+			 		width:350,
+			 		dialogClass: 'dialogStyle',
+			 		open: function(event, ui) { 
+			 			$(".ui-dialog-titlebar-close").removeClass("ui-dialog-titlebar-close").html("<span>X</span>"); 
+			 		},
+			 		draggable:true,
+			 		resizeable:true
+			 	});
+
+			 	var hostdiv="";
+			 	var horizontal_div="";
+			 	var vertical_div=""; 
+
+			 	function setCss(size_of_cell,width_of_cell,height_of_body,opacity_of_cell,color_of_cell,position_of_cell,rgbcolor,rgbcolor1,hostdiv,vertical_div,horizontal_div){
+
+			 	 if(width_of_cell != "100%" && position_of_cell == "center"){
+
+			 				var margin_of_div= parseInt(width_of_cell);
+			 				margin_of_div=100-margin_of_div;
+			 				margin_of_div=Math.round(margin_of_div/2)-1;
+
+			 				margin_of_div=margin_of_div+"%";
+
+			 				console.log(margin_of_div);
+			 				
+			 				$(hostdiv).removeAttr('style');
+			 				$(hostdiv).css({"position":"absolute" , "top":"0px" ,"left":margin_of_div ,"width":width_of_cell , "height": height_of_body , "z-index":"1000", "right": margin_of_div });	
+			 				console.log(margin_of_div);	
+			 		
+			 		} if(width_of_cell != "100%" && position_of_cell == "left"){
+
+			 				var right_of_cell=100-parseInt(width_of_cell);	
+
+			 				$(hostdiv).css({"position":"absolute" , "top":"0px" , "left":"0px" , "width":width_of_cell , "height": height_of_body , "margin":"0px", "z-index":"1000", "right": right_of_cell+"%" });		
+			 		
+			 		} if(width_of_cell != "100%" && position_of_cell == "right"){
+
+			 				var left_of_cell=100-parseInt(width_of_cell);	
+			 				$(hostdiv).css({"position":"absolute" ,"left":left_of_cell+"%", "top":"0px" , "width":width_of_cell , "height": height_of_body , "z-index":"1000", "right": "0px" });		
+			 		
+			 		}else{
+
+			 				$(hostdiv).css({"position":"absolute" , "top":"0px" , "width":width_of_cell , "height": height_of_body ,
+			 		"margin":"0px", "z-index":"1000", "right": "0px" });
+			 		
+			 		}
+
+			 		document.body.appendChild(hostdiv);
+
+
+			 		rgbcolor="-webkit-repeating-linear-gradient(top, "+rgbcolor+" 0%,"+ rgbcolor +"50%, transparent 50%, transparent 100%)";
+			 		rgbcolor1="-webkit-repeating-linear-gradient(left, "+rgbcolor1+" 0%,"+ rgbcolor1 +"50%, transparent 50%, transparent 100%)";
+
+			 		size_of_cell= (size_of_cell * 2)+"px";
+
+			 		
+			 		$(horizontal_div).css({"position":"absolute" , "top":"0px" , "left":"0px" , "width":"100%" , "height" :"100%" , 
+			 		"opacity":opacity_of_cell, "background-image" : rgbcolor , "background-size": size_of_cell});
+
+			 		hostdiv.appendChild(horizontal_div);
+
+			 		$(vertical_div).css({"position":"absolute" , "top":"0px" , "left":"0px" , "width":"100%" , "height" :"100%" , 
+			 		"opacity":opacity_of_cell, "background-image" : rgbcolor1 , "background-size": size_of_cell});
+			 		hostdiv.appendChild(vertical_div);
+
+			 	}
+
+			 	$(document).on('click',"#generate-btn1", function(){
+
+			 		var size_of_cell= $("#cell-size").val();
+			 		var width_of_cell= $("#width-of-cell").val(); 
+			 		var height_of_body=$("#mainpage").height()+"px";
+			 		var opacity_of_cell=$("#opacity").val();
+			 		var color_of_cell=$("#color-of-cell").val();
+			 		var position_of_cell=$("#position-of-cell").val();
+
+			 		var rgbcolor=hex2rgb(color_of_cell);
+			 		var rgbcolor1=hex2rgb(color_of_cell);
+
+			 		
+
+			 		if(hostdiv==""){
+			 	
+			 	    hostdiv= document.createElement('div');
+			 	    horizontal_div= document.createElement('div');
+			 	    vertical_div= document.createElement('div');
+
+			 		hostdiv.id="markup_grid_container";
+			 		
+			 		setCss(size_of_cell,width_of_cell,height_of_body,opacity_of_cell,color_of_cell,position_of_cell,rgbcolor,rgbcolor1,hostdiv,vertical_div,horizontal_div);
+
+			 		}else{
+						
+						setCss(size_of_cell,width_of_cell,height_of_body,opacity_of_cell,color_of_cell,position_of_cell,rgbcolor,rgbcolor1,hostdiv,vertical_div,horizontal_div);
+
+			 			$("#markup_grid_container").show();
+			 		}
+
+
+			 	});
+
+				$("#generate-btn2").click(function(){
+
+					$("#markup_grid_container").hide();
+				});
+			 });
+
+			function hex2rgb(col) {
+			    var r, g, b;
+			    if (col.charAt(0) == '#') {
+			        col = col.substr(1);
+			    }
+			    r = col.charAt(0) + col.charAt(1);
+			    g = col.charAt(2) + col.charAt(3);
+			    b = col.charAt(4) + col.charAt(5);
+			    r = parseInt(r, 16);
+			    g = parseInt(g, 16);
+			    b = parseInt(b, 16);
+			    return 'rgb(' + r + ',' + g + ',' + b + ')';
+			}
+
+		</script>
+</html>

@@ -1,0 +1,246 @@
+<!doctype html>
+<html>
+        <head>
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                <link href="css/bootstrap.css" rel="stylesheet">
+                <link href="css/signin.css" rel="stylesheet">
+                <style type="text/css">
+                        .thumbnail img {
+                            width:500px;
+                            height:500px
+                        }
+                </style>        
+        </head>
+        <body>
+                <div class="row">
+                 
+                  <div class="col-xs-6 col-md-5">
+                    <a href="http://www.google.com/search?q=quaid+e+azam" class="thumbnail">
+                      <img src="2.jpg" alt="Quaid e Azam " text="Muhammad Ali Jinnah in London When he was Young">
+                    </a>
+                  </div>
+                  <div class="col-xs-6 col-md-3" id="insert_user">
+                    <input type="image" src="add_user.png" id="add_user" class="btn btn-default" />
+
+                    <form class="form-signin" role="form" style="display:none">
+        <div>
+          <div class="text-font">
+            Email Address:
+          </div>
+          <div >
+            <input type="email" class="form-control" placeholder="Email Address" required autofocus>
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Password:
+          </div>
+          <div>
+            <input class="form-control" type="password" placeholder="Password" required>
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Country:
+          </div>
+          <div>
+            <select style="width:100%;height:32px;background-image:url(24/Afghanistan.png);background-repeat:no-repeat;padding-left:40px" name="align" id="country">
+
+            </select>
+
+
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Width:
+          </div>
+          <div>
+            <input type="text" class="form-control" name="width" value="100%" id="width-of-cell">
+          </div>
+        </div>
+        <div>
+          <div class="text-font">
+            Align:
+          </div>
+          <div >
+            <select style="width:100%;height:40px" name="align" id="position-of-cell">
+              <option value="center">Center</option>
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </div>
+        </div>
+        <div>
+           <div class="text-font">
+            Container:
+          </div>
+          <div>
+            <input type="text" class="form-control" name="container" value="body" id="container-of-cell">
+          </div>
+        </div>
+
+        <br>
+        <div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </div>
+      </form>
+
+                  </div>  
+                  
+                </div>
+
+                <div class="col-xs-6 col-md-5" style="text-align:center">
+                  <input type="image" src="back.png" id="prev" class="btn btn-default" />
+
+                  <input type="image" src="forward.png" id="next" class="btn btn-default" />
+                </div>
+                                
+        </body>
+        
+          <script type="text/javascript" src="countries.js"></script>
+          <script type="text/javascript" src="jQuery.js"></script>
+		<script type="text/javascript">
+		
+		        $(document).ready(function(){
+		        
+                    var altImg={
+                        "1":"Rashid Jahangir",
+                        "2":"Quaid-e-Azam",
+                        "3":"Z.A. Bhutto",
+                        "4":"Nelson Mandela",
+                        "5":"Khwaja ghulam farid"
+                      }
+
+                    var textImg={
+                      "1":"Rashid Jahangir Photo",
+                      "2":"Muhammad Ali Jinnah in London When he was Young",
+                      "3":"Z A Bhutto was greate leader and thinker",
+                      "4":"Nelson Mandela Play an important role SA progress",
+                      "5":"Khwaja ghulam farid was great sariki poet"
+                    }
+
+                    var linkImg={
+                        "1":"http://www.google.com/search?q=rashid+jahangir",
+                        "2":"http://www.google.com/search?q=quaid+e+azam",
+                        "3":"http://www.google.com/search?q=z+a+bhutto",
+                        "4":"http://www.google.com/search?q=Nelson+Mandela",
+                        "5":"http://www.google.com/search?q=Khwaja+ghulam+farid",
+                      }
+
+
+                     var countries=countries_list(); 
+                     for(var i in countries){
+
+                        var countryName=countriesWithSpaces(countries[i]);
+
+                        $("#country").append('<option style="background:url(24/'+countryName+'.png); background-repeat:no-repeat;padding-left:40px;height:25px;border-bottom:1px solid;"  value='+i+'>'+countries[i]+'</option>');
+                   
+                        //console.log(countries[i]);
+                     }
+
+                     $("#country").change(function(){
+
+                        var cid=$(this).val();
+                        var countryID=countriesWithSpaces(countries[cid]);
+                      
+                        $(this).css({"background-image":"url(24/"+countryID+".png)"});
+
+                     });
+
+                     function countriesWithSpaces(s) {
+                      
+                      var spaces=s.split(' ').length;
+                        if(spaces>0){
+                          var res= s.split(' ');
+                          var country_name="";
+                          for(var k=0;k<spaces;k++){
+                            if(k+1==spaces){
+                              country_name=country_name+res[k];
+                            }else{
+                              country_name=country_name+res[k]+"-";
+                            }
+                          }
+                          return country_name;
+                        }else{
+                          return s;
+                        }
+
+
+                     }
+
+		                $("#progress").click(function(){
+		                
+		                        //var progressElement=document.getElementsByClass("progress-bar");
+		                 
+		                        var value=$(".progress-bar").attr("aria-valuenow");
+		                        value=parseInt(value);
+		                        if(value!=100){
+		                                value=value+10;
+		                        }else{
+		                                alert("Progress Complete");
+		                        }
+		                        $(".progress-bar").attr("aria-valuenow",value);
+		                        $(".progress-bar").html(value+"%");
+		                        $(".progress-bar").css({"width":value+"%"});
+		                
+		                });
+
+
+                    $("#prev").click(function(){
+
+                      var src= $("img").attr("src");
+
+                      var src_id= src.substr(0,1);
+
+
+
+                      if(src_id<=1){
+                        $("img").attr("src","8.jpg");
+                        $("img").attr("alt",altImg["8"]);
+                        $("img").attr("text",textImg["8"]);
+                        $("a").attr("href",linkImg["8"])
+
+                      }else{
+                        $("img").attr("src",(parseInt(src_id)-1)+".jpg");
+                        $("img").attr("alt",altImg[parseInt(src_id)-1]);
+                        $("img").attr("text",textImg[parseInt(src_id)-1]);
+                        $("a").attr("href",linkImg[parseInt(src_id)-1]);
+                      }
+
+
+                    });
+
+                    $("#next").click(function(){
+
+                      var src= $("img").attr("src");
+
+                      var src_id= src.substr(0,1);
+
+
+                      if(src_id>=8){
+                        $("img").attr("src","1.jpg");
+                        $("img").attr("alt",altImg["1"]);
+                        $("img").attr("text",textImg["1"]);
+                        $("a").attr("href",linkImg["1"])
+
+                      }else{
+                        $("img").attr("src",(parseInt(src_id)+1)+".jpg");
+                        $("img").attr("alt",altImg[parseInt(src_id)+1]);
+                        $("img").attr("text",textImg[parseInt(src_id)+1]);
+                        $("a").attr("href",linkImg[parseInt(src_id)+1]);
+                      }
+
+
+                    });
+
+                    $("#add_user").click(function(){
+
+                     $(".form-signin").toggle(); 
+
+                    });
+		        
+		        });
+		
+		</script>
+</html>
